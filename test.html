@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;1,500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&style=filled">
+    <link rel="stylesheet" href="css/styles-test.css">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <main class="main" id="main">
+        <nav class="sidebar" id="sidebar">
+            <ul class="list">
+                <li class="list-item">
+                    <span class="material-icons" id="dashboard">space_dashboard</span> DASHBOARD
+                </li>
+                <li class="list-item">
+                    <span class="material-icons" id="tickets">inventory_2</span> TICKETS
+                </li>
+                <li class="list-item">
+                    <span class="material-icons" id="reports">poll</span> REPORTS
+                </li>
+                <li class="list-item">
+                    <span class="material-icons" id="settings">settings</span> SETTINGS
+                </li>
+            </ul>
+        </nav>
+        <header class="header" id="header">
+            <div class="menu">
+                <span class="material-icons" id="menu">menu</span>
+                <div class="material-icons"><img src="images/logo-min.svg" style="height:auto"></div>
+            </div>
+            <div class="header-right">
+                <span class="material-icons">notifications</span>
+                <span class="material-icons">email</span>
+                <a href="timeclock.html">
+                    <span class="material-icons">schedule</span>
+                </a>
+                <a href="home.html">
+                    <span class="material-icons">account_circle</span>
+                </a>
+            </div>
+        </header>
+        <div class="content" id="content">
+            <div class="main-cards">
+                <div class="card">
+                    <div class="card-inner">
+                        <p>TICKET COUNT</p>
+                        <div class="icon icon-shape">
+                            <span class="material-icons">inventory_2</span>
+                        </div>
+                    </div>
+                    <span class="text-primary">256</span>
+                </div>
+    
+                <div class="card">
+                    <div class="card-inner">
+                        <p>TO BE TRIAGED</p>
+                        <div class="icon icon-shape">
+                            <span class="material-icons">medical_services</span>
+                        </div>
+                    </div>
+                    <span class="text-primary">83</span>
+                </div>
+    
+                <div class="card">
+                    <div class="card-inner">
+                        <p>TO BE REPAIRED</p>
+                        <div class="icon icon-shape">
+                            <span class="material-icons">build</span>
+                        </div>
+                    </div>
+                    <span class="text-primary">79</span>
+                </div>
+    
+                <div class="card">
+                    <div class="card-inner">
+                        <p>TO BE DELIVERED</p>
+                        <div class="icon icon-shape">
+                            <span class="material-icons">local_shipping</span>
+                        </div>
+                    </div>
+                    <span class="text-primary">56</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.40.0/apexcharts.min.js"></script>
+    <script src="components/app.js"></script>
+    <script src="components/chart.js"></script>
+    <script src="components/card.js"></script>
+    <script src="components/camera.js"></script>
+    <script src="components/test.js"></script>
+</body>
