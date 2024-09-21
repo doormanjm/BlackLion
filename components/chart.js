@@ -1,13 +1,13 @@
 var barChartOptions = {
     series: [
         {
-            name: 'To Be Triaged',
+            name: 'Assigned',
             data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
         }, {
-            name: 'To Be Repaired',
+            name: 'Available',
             data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
         }, {
-            name: 'To Be Delivered',
+            name: 'In Use',
             data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
         }
     ],
@@ -99,10 +99,10 @@ barChart.render();
 
 var areaChartOptions = {
     series: [{
-        name: "Tickets Entered",
+        name: "Will Be In Attendance",
         data: [31, 40, 28, 51, 42, 109, 100],
     }, {
-        name: "Tickets Closed",
+        name: "Unavailable",
         data: [11, 32, 45, 32, 34, 52, 41],
     }],
     chart: {
@@ -114,7 +114,7 @@ var areaChartOptions = {
             show: false,
         },
     },
-    colors: ["#d50000", "#00ab57"],
+    colors: ["#00ab57", "#d50000"],
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
     dataLabels: {
         enabled: false,
@@ -177,7 +177,7 @@ var areaChartOptions = {
         [
             {
                 title: {
-                    text: "Tickets Added",
+                    text: "Guest Count",
                     style: {
                         color: "#f5f7ff",
                     },
@@ -187,21 +187,7 @@ var areaChartOptions = {
                         colors: ["#f5f7ff"],
                     },
                 },
-            },
-            {
-                opposite: true,
-                title: {
-                    text: "Tickets Closed",
-                    style: {
-                        color: "#f5f7ff",
-                    },
-                },
-                labels: {
-                    style: {
-                        colors: ["#f5f7ff"],
-                    },
-                },
-            },
+            }
         ],
     tooltip: {
         shared: true,
