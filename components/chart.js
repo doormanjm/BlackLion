@@ -42,7 +42,7 @@ var barChartOptions = {
         categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
         labels: {
             style: {
-                colors: "#f5f7ff",
+                colors: "#353535",
             },
         },
     },
@@ -50,12 +50,12 @@ var barChartOptions = {
         title: {
             text: 'Number of Units',
             style: {
-                color: "#f5f7ff",
+                color: "#353535",
             },
         },
         labels: {
             style: {
-                colors: "#f5f7ff",
+                colors: "#353535",
             },
         },
     },
@@ -63,7 +63,7 @@ var barChartOptions = {
         opacity: 1
     },
     grid: {
-        borderColor: "#f5f7ff",
+        borderColor: "#353535",
         yaxis: {
             lines: {
                 show: true,
@@ -77,7 +77,7 @@ var barChartOptions = {
     },
     legend: {
         labels: {
-            colors: "#f5f7ff",
+            colors: "#353535",
         },
         show: true,
         position: "bottom",
@@ -130,7 +130,7 @@ var areaChartOptions = {
         type: "gradient",
     },
     grid: {
-        borderColor: "#f5f7ff",
+        borderColor: "#353535",
         yaxis: {
             lines: {
                 show: true,
@@ -144,7 +144,7 @@ var areaChartOptions = {
     },
     legend: {
         labels: {
-            colors: "#f5f7ff",
+            colors: "#353535",
         },
         show: true,
         position: "bottom",
@@ -169,7 +169,7 @@ var areaChartOptions = {
         labels: {
             offsetY: 5,
             style: {
-                colors: "#f5f7ff",
+                colors: "#353535",
             },
         },
     },
@@ -179,12 +179,12 @@ var areaChartOptions = {
                 title: {
                     text: "Guest Count",
                     style: {
-                        color: "#f5f7ff",
+                        color: "#353535",
                     },
                 },
                 labels: {
                     style: {
-                        colors: ["#f5f7ff"],
+                        colors: ["#353535"],
                     },
                 },
             }
