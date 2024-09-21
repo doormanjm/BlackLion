@@ -3,7 +3,7 @@ body {
     padding: 0;
     font-family: 'Jost', sans-serif;
     box-sizing: border-box;
-    background-color: #aaaaaa;
+    background-color: #F9E8D9;
     color: #000000;
     font-family: 'Jost', sans-serif;
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
@@ -24,7 +24,7 @@ main::-webkit-scrollbar {
 }
 
 .text-primary {
-    color: #ffffff;
+    color: #000000;
 }
 
 .text-blue {
@@ -64,8 +64,8 @@ main::-webkit-scrollbar {
 
 .header {
     grid-area: header;
-    background-color: #2c6994;
-    color: #ffffff;
+    background-color: #FAD4C0;
+    color: #000000;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -89,7 +89,7 @@ img {
     position: relative;
     top: 0;
     left: -257px;
-    background-color: #2c6994;
+    background-color: #FAD4C0;
     transition: left 0.3s ease-in-out;
     box-shadow: 7px 8px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -111,7 +111,7 @@ img {
 }
 
 a {
-    color: #ffffff;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -170,9 +170,9 @@ a {
     flex-direction: column;
     justify-content: space-around;
     padding: 25px;
-    background-color: #474f79;
+    background-color: #C6E0D6;
     resize: vertical;
-    border-left: 7px solid #2c6994;
+    border-left: 7px solid #FF6F61;
     box-sizing: border-box;
     border-radius: 5px;
     box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
@@ -252,9 +252,9 @@ hr.solid {
 }
 
 .charts-card {
-    background-color: #474f79;
+    background-color: #C6E0D6;
     padding: 25px;
-    border-left: 7px solid #2c6994;
+    border-left: 7px solid #FF6F61;
     box-sizing: border-box;
     -webkit-column-break-inside: avoid;
     border-radius: 5px;
