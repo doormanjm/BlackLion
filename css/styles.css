@@ -166,6 +166,13 @@ a {
     margin: 20px 0;
 }
 
+.single-form{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
 .camera {
     display: grid;
     grid-template-columns: 1fr;
