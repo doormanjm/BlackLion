@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;1,500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&style=filled">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="css/styles.css">
     <title>Admin Dashboard</title>
 </head>
@@ -22,42 +23,43 @@
             <div class="header-right">
                 <span class="material-icons">notifications</span>
                 <span class="material-icons">email</span>
-                <a href="timeclock.html">
+                <a href="#">
                     <span class="material-icons">schedule</span>
                 </a>
-                <a href="home.html">
+                <a href="login.html">
                     <span class="material-icons">account_circle</span>
                 </a>
             </div>
         </header>
         <!-- Header End -->
+        <!-- Body Start -->
         <main class="main-container" id="main_container">
             <div class="main-cards">
                 <div class="card">
                     <div class="card-inner">
-                        <p>TICKET COUNT</p>
+                        <p>EVENT</p>
                         <div class="icon icon-shape background-blue text-primary">
-                            <span class="material-icons">inventory_2</span>
+                            <span class="material-symbols-rounded">event</span>
                         </div>
                     </div>
-                    <span class="text-primary" id="ticketCount"></span>
+                    <span class="text-primary">Waiakea Wedding</span>
                 </div>
 
                 <div class="card">
                     <div class="card-inner">
-                        <p>TO BE CHANGED</p>
+                        <p>VENUE</p>
                         <div class="icon icon-shape background-red text-primary">
-                            <span class="material-icons">medical_services</span>
+                            <span class="material-symbols-rounded">things_to_do</span>
                         </div>
                     </div>
-                    <span class="text-primary">83</span>
+                    <span class="text-primary">Grand Plaza Hotel</span>
                 </div>
 
                 <div class="card">
                     <div class="card-inner">
-                        <p>TO BE REPAIRED</p>
+                        <p>RESOURCES</p>
                         <div class="icon icon-shape background-orange text-primary">
-                            <span class="material-icons">build</span>
+                            <span class="material-symbols-rounded">chair_alt</span>
                         </div>
                     </div>
                     <span class="text-primary">79</span>
@@ -65,9 +67,9 @@
 
                 <div class="card">
                     <div class="card-inner">
-                        <p>TO BE DELIVERED</p>
+                        <p>GUESTS</p>
                         <div class="icon icon-shape background-green text-primary">
-                            <span class="material-icons">local_shipping</span>
+                            <span class="material-symbols-rounded">groups</span>
                         </div>
                     </div>
                     <span class="text-primary">56</span>
@@ -76,12 +78,12 @@
             <div class="charts">
 
                 <div class="charts-card">
-                    <p class="chart-title">Ticket Status</p>
+                    <p class="chart-title">Resource Status</p>
                     <div id="bar-chart"></div>
                 </div>
 
                 <div class="charts-card">
-                    <p class="chart-title">Tickets Opened vs Closed</p>
+                    <p class="chart-title">RSVPs</p>
                     <div id="area-chart"></div>
                 </div>
 
@@ -127,31 +129,33 @@
                 </div>               
             </div>
         </main>
+        <!-- Body End -->
+        <!-- Nav Start -->
         <nav class="sidebar" id="sidebar">
             <ul class="list">
                 <li class="list-item">
+                    <a href="Dashboard.html">
+                        <span class="material-symbols-rounded">space_dashboard</span> DASHBOARD
+                    </a>
+                </li>
+                <li class="list-item">
                     <a href="index.html">
-                        <span class="material-icons">space_dashboard</span> 
-                        <span>DASHBOARD</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="test.html">
-                        <span class="material-icons">inventory_2</span> PRODUCTS
+                        <span class="material-symbols-rounded">event</span> PLANNING
                     </a>
                 </li>
                 <li class="list-item">
                     <a href="#">
-                        <span class="material-icons">poll</span> REPORTS
+                        <span class="material-symbols-rounded">chair_alt</span> RESOURCES
                     </a>
                 </li>
                 <li class="list-item">
                     <a href="#">
-                        <span class="material-icons">settings</span> SETTINGS
+                        <span class="material-symbols-rounded">things_to_do</span> VENUES
                     </a>
                 </li>
             </ul>
         </nav>
+        <!-- Nav End -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.40.0/apexcharts.min.js"></script>
     <script src="components/app.js"></script>
