@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="/css/nodejs.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome <%= user ? user.first_name : 'to project Black Lion' %>!</h1>
+
+    <% if (user) { %>
+      <form action="/logout?_method=DELETE" method="POST">
+        <button type="submit">Logout</button>
+      </form>
+    <% } else { %>
+      <a href="/login">Login</a> | <a href="/register">Register</a>
+    <% } %>
+  </div>
+</body>
+</html>
