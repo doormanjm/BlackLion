@@ -1,0 +1,47 @@
+article,
+#world-clock {
+   width: 80%; /* Same width for both */
+   max-width: 800px; /* Limit max width */
+   margin: 0 auto; /* Center the elements */
+}
+
+/* Enhanced CSS for World Clock */
+#world-clock {
+   padding: 20px;
+   margin-top: 20px;
+   background-color: #333;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   color: #fff;
+   font-family: 'Arial', sans-serif;
+   text-align: center;
+}
+
+#world-clock h2 {
+   font-size: 1.8em;
+   margin-bottom: 20px;
+   color: #ffa500; /* Orange color for the title */
+}
+
+.city {
+   display: flex;
+   justify-content: space-between;
+   padding: 10px 20px;
+   margin: 10px 0;
+   background-color: #444;
+   border-radius: 8px;
+}
+
+.city:hover {
+   background-color: #555;
+}
+
+.city-name {
+   font-weight: bold;
+   font-size: 1.3em;
+}
+
+.city span {
+   font-family: 'Courier New', monospace;
+   font-size: 1.3em;
+}

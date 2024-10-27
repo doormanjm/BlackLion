@@ -1,0 +1,118 @@
+/* Additional CSS for button positioning */
+header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 5px; /* Reduced padding */
+   background-color: #f4f4f4;
+}
+
+.header-buttons {
+   display: flex;
+   align-items: center;
+   gap: 5px; /* Reduced gap */
+}
+
+.header-buttons a {
+   text-decoration: none;
+   padding: 5px 10px; /* Reduced padding */
+   background-color: #000;
+   color: #fff;
+   border-radius: 3px; /* Reduced border radius */
+   transition: background-color 0.3s;
+}
+
+.header-buttons a:hover {
+   background-color: #555;
+}
+
+img {
+   max-height: 100px; /* Reduced image size */
+}
+
+/* Flex container for article and event links */
+.content {
+   display: flex;
+   justify-content: space-between;
+   margin: 10px; /* Reduced margin */
+}
+
+/* Styles for article */
+article {
+   width: 75%; /* Adjust width to make it narrower */
+   max-width: 700px; /* Limit the max width */
+   margin: 0; /* Remove margin */
+   padding: 10px; /* Reduced padding */
+   background-color: #f9f9f9;
+   border-radius: 5px; /* Reduced border radius */
+   box-shadow: none; /* Removed shadow for simplicity */
+}
+
+/* Styles for world clock */
+#world-clock {
+   width: 75%; /* Same width for both */
+   max-width: 700px; /* Limit max width */
+   margin: 20px auto; /* Center the elements */
+   padding: 10px; /* Reduced padding */
+   background-color: #333;
+   border-radius: 5px; /* Reduced border radius */
+   box-shadow: none; /* Removed shadow for simplicity */
+   color: #fff;
+   font-family: 'Arial', sans-serif;
+   text-align: center;
+}
+
+#world-clock h2 {
+   font-size: 1.5em; /* Adjusted font size */
+   margin-bottom: 10px; /* Reduced margin */
+   color: #ffa500; /* Orange color for the title */
+}
+
+.city {
+   display: flex;
+   justify-content: space-between;
+   padding: 5px 10px; /* Reduced padding */
+   margin: 5px 0; /* Reduced margin */
+   background-color: #444;
+   border-radius: 4px; /* Reduced border radius */
+}
+
+.city:hover {
+   background-color: #555;
+}
+
+.city-name {
+   font-weight: bold;
+   font-size: 1.1em; /* Adjusted font size */
+}
+
+.city span {
+   font-family: 'Courier New', monospace;
+   font-size: 1.1em; /* Adjusted font size */
+}
+
+/* Styles for event links */
+.event-links {
+   width: 20%; /* Set width for event links */
+   padding: 5px; /* Reduced padding */
+   background-color: #f9f9f9;
+   border-radius: 5px; /* Reduced border radius */
+   box-shadow: none; /* Removed shadow for simplicity */
+}
+
+.event-links h2 {
+   font-size: 1.3em; /* Adjusted title size */
+   color: #333; /* Title color */
+}
+
+.event-links a {
+   display: block; /* Each link on a new line */
+   margin: 5px 0; /* Reduced spacing between links */
+   text-decoration: none;
+   color: #0066cc; /* Link color */
+   transition: color 0.3s; /* Transition for hover effect */
+}
+
+.event-links a:hover {
+   color: #004999; /* Darker color on hover */
+}

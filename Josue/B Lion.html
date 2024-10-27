@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Black Lion.css" rel="stylesheet" type="text/css" />
+    <title>Black Lion</title>
+    <style>
+       
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px; 
+            background-color: #f4f4f4;
+        }
+
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 5px; 
+        }
+
+        .header-buttons a {
+            text-decoration: none;
+            padding: 15px 20px; 
+            background-color: #000;
+            color: #fff;
+            border-radius: 3px; 
+            font-size: 1em; 
+            transition: background-color 0.3s;
+        }
+
+        .header-buttons a:hover {
+            background-color: #555;
+        }
+
+        img {
+            max-height: 120px; 
+        }
+
+       
+        .content {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px; 
+        }
+
+        
+        article {
+            width: 100%; 
+            max-width: 1800px; 
+            margin: 0; 
+            padding: 15px; 
+            background-color: #f9f9f9; 
+            border-radius: 5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        }
+
+        
+        #world-clock {
+            width: 70%; 
+            max-width: 400px; 
+            margin: 10px auto; 
+            padding: 15px; 
+            background-color: #333;
+            border-radius: 5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        #world-clock h2 {
+            font-size: 1.5em; 
+            margin-bottom: 10px; 
+            color: #ffa500; 
+        }
+
+        .city {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px; 
+            margin: 5px 0; 
+            background-color: #444;
+            border-radius: 5px; 
+        }
+
+        .city:hover {
+            background-color: #555;
+        }
+
+        .city-name {
+            font-weight: bold;
+            font-size: 1.2em; 
+        }
+
+        .city span {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2em; 
+        }
+
+        
+        .event-links {
+            width: 25%; 
+            padding: 15px; 
+            background-color: #f9f9f9; 
+            border-radius: 5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        }
+
+        .event-links h2 {
+            font-size: 1.5em; 
+            color: #333; 
+            margin: 0 0 10px; 
+        }
+
+        .event-links a {
+            display: block; 
+            margin: 8px 0; 
+            text-decoration: none;
+            color: #0066cc; 
+            font-size: 1em; 
+            transition: color 0.3s; 
+        }
+
+        .event-links a:hover {
+            color: #004999; 
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="Black Lion.PNG" alt="Black Lion" />
+
+        
+        <div class="header-buttons">
+            <a href="Registration page.html">Sign Up</a>
+            <a href="Log-in.html">Sign In</a>
+        </div>
+    </header>
+
+    <div class="content">
+        <article>
+            <h1>Black Lion</h1>
+            <p>Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail. Unlike other event planning companies, Black Lion Group offers personalized services tailored to the unique needs and visions of each client. Their expertise in coordinating various types of events whether corporate gatherings, weddings, or community celebrations ensures that every aspect, from logistics to aesthetics, is handled flawlessly.</p>
+            <p>One of their standout experiences includes organizing a high profile corporate retreat for a leading tech company, where they transformed a standard conference room into an immersive experience that reflected the company’s innovative culture. The team handled everything from custom decor to interactive workshops, resulting in overwhelmingly positive feedback from attendees and executives alike.</p>
+            <p>By leveraging their extensive network of vendors and resources, Black Lion Group delivers exceptional events that leave lasting impressions, positioning themselves as the go to choice for anyone seeking unforgettable experiences.</p>
+            <h2>Mission</h2>
+            <p>To craft memorable and exceptional events that reflect our clients' visions while providing unparalleled service and attention to detail.</p>
+            <h2>Vision</h2>
+            <p>To be recognized as the premier event planning group, renowned for our creativity, innovation, and commitment to delivering extraordinary experiences that exceed client expectations.</p>
+        </article>
+
+       
+        <div class="event-links">
+            <h2>Upcoming Events</h2>
+            <a href="Birthdays">Birthdays</a>
+            <a href="Parties">Parties</a>
+            <a href="Weedings">Weedings</a>
+            <a href="....">Other</a>
+        </div>
+    </div>
+
+    
+    <div id="world-clock">
+        <h2>World Clock</h2>
+        <div class="city">
+            <span class="city-name">New York:</span>
+            <span id="new-york-time"></span>
+        </div>
+        <div class="city">
+            <span class="city-name">London:</span>
+            <span id="london-time"></span>
+        </div>
+        <div class="city">
+            <span class="city-name">Tokyo:</span>
+            <span id="tokyo-time"></span>
+        </div>
+        <div class="city">
+            <span class="city-name">Sydney:</span>
+            <span id="sydney-time"></span>
+        </div>
+    </div>
+
+    <script>
+        function updateWorldClock() {
+            const now = new Date();
+
+            
+            const newYorkTime = now.toLocaleString("en-US", {
+                timeZone: "America/New_York",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+            document.getElementById("new-york-time").textContent = newYorkTime;
+
+            
+            const londonTime = now.toLocaleString("en-GB", {
+                timeZone: "Europe/London",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+            document.getElementById("london-time").textContent = londonTime;
+
+            
+            const tokyoTime = now.toLocaleString("en-JP", {
+                timeZone: "Asia/Tokyo",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+            document.getElementById("tokyo-time").textContent = tokyoTime;
+
+            
+            const sydneyTime = now.toLocaleString("en-AU", {
+                timeZone: "Australia/Sydney",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+            document.getElementById("sydney-time").textContent = sydneyTime;
+        }
+
+       
+        setInterval(updateWorldClock, 1000);
+        
+        updateWorldClock();
+    </script>
+</body>
+
+</html>
