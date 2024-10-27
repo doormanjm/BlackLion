@@ -13,5 +13,3 @@ Thumbs.db
 
 # Ignore package-lock.json (Optional, if you don't want to track it)
 package-lock.json
-# Path: .env
-.env
