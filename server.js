@@ -45,11 +45,17 @@ async function initializeApp() {
       new LocalStrategy(async (username, password, done) => {
         try {
           const [rows] = await db.query('SELECT * FROM Person WHERE username = ?', [username]);
-          if (rows.length === 0) return done(null, false, { message: 'No user with that username' });
+          if (rows.length === 0) {
+            return done(null, false, { message: 'No user with that username' });
+          }
 
           const user = rows[0];
           const match = await bcrypt.compare(password, user.password);
-          return match ? done(null, user) : done(null, false, { message: 'Password incorrect' });
+          if (match) {
+            return done(null, user);
+          } else {
+            return done(null, false, { message: 'Incorrect password' });
+          }
         } catch (err) {
           return done(err);
         }
@@ -69,7 +75,7 @@ async function initializeApp() {
     // Routes
     app.get('/', (req, res) => res.render('index.ejs', { user: req.user }));
 
-    app.get('/login', (req, res) => res.render('login.ejs'));
+    app.get('/login', (req, res) => res.render('login.ejs', { message: req.flash('error') }));
 
     app.post(
       '/login',

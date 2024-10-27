@@ -6,11 +6,18 @@
 </head>
 <body>
   <h1>Login</h1>
+
+  <!-- Display Flash Message for Login Errors -->
+  <% if (message) { %>
+    <p style="color: red;"><%= message %></p>
+  <% } %>
+
   <form action="/login" method="POST">
     <input type="text" name="username" placeholder="Username" required />
     <input type="password" name="password" placeholder="Password" required />
     <button type="submit">Login</button>
   </form>
+
   <a href="/register">Register</a>
 </body>
 </html>
