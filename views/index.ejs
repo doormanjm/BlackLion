@@ -1,4 +1,17 @@
-<h1>Hi <%= name %></h1>
-<form action="/logout?_method=DELETE" method="POST">
-  <button type="submit">Log Out</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+</head>
+<body>
+  <h1>Welcome <%= user ? user.username : 'Guest' %>!</h1>
+  <% if (user) { %>
+    <form action="/logout?_method=DELETE" method="POST">
+      <button type="submit">Logout</button>
+    </form>
+  <% } else { %>
+    <a href="/login">Login</a> | <a href="/register">Register</a>
+  <% } %>
+</body>
+</html>

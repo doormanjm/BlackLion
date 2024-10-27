@@ -1,87 +1,115 @@
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config()
-  }
-  
-  import express, { urlencoded } from 'express'
-  const app = express()
-  import { hash } from 'bcrypt'
-  import passport, { initialize, session as _session, authenticate } from 'passport'
-  import flash from 'express-flash'
-  import session from 'express-session'
-  import methodOverride from 'method-override'
-  
-  import initializePassport from './passport-config'
-  initializePassport(
-    passport,
-    email => users.find(user => user.email === email),
-    id => users.find(user => user.id === id)
-  )
-  
-  const users = []
-  
-  app.set('view-engine', 'ejs')
-  app.use(urlencoded({ extended: false }))
-  app.use(flash())
-  app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false
-  }))
-  app.use(initialize())
-  app.use(_session())
-  app.use(methodOverride('_method'))
-  
-  app.get('/', checkAuthenticated, (req, res) => {
-    res.render('index.ejs', { name: req.user.name })
-  })
-  
-  app.get('/login', checkNotAuthenticated, (req, res) => {
-    res.render('login.ejs')
-  })
-  
-  app.post('/login', checkNotAuthenticated, authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
-  }))
-  
-  app.get('/register', checkNotAuthenticated, (req, res) => {
-    res.render('register.ejs')
-  })
-  
-  app.post('/register', checkNotAuthenticated, async (req, res) => {
-    try {
-      const hashedPassword = await hash(req.body.password, 10)
-      users.push({
-        id: Date.now().toString(),
-        name: req.body.name,
-        email: req.body.email,
-        password: hashedPassword
+import express from 'express';
+import bcrypt from 'bcrypt';
+import passport from 'passport';
+import flash from 'express-flash';
+import session from 'express-session';
+import methodOverride from 'method-override';
+import mysql from 'mysql2/promise';
+import dotenv from 'dotenv';
+import { Strategy as LocalStrategy } from 'passport-local';
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+async function initializeApp() {
+  try {
+    // Create MySQL connection
+    const db = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+    });
+
+    console.log('Connected to AWS RDS Database');
+
+    // Middleware Setup
+    app.set('view engine', 'ejs');
+    app.use(express.urlencoded({ extended: false }));
+    app.use(flash());
+    app.use(
+      session({
+        secret: 'secret',
+        resave: false,
+        saveUninitialized: false,
       })
-      res.redirect('/login')
-    } catch {
-      res.redirect('/register')
-    }
-  })
-  
-  app.delete('/logout', (req, res) => {
-    req.logOut()
-    res.redirect('/login')
-  })
-  
-  function checkAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next()
-    }
-  
-    res.redirect('/login')
+    );
+    app.use(passport.initialize());
+    app.use(passport.session());
+    app.use(methodOverride('_method'));
+
+    // Passport Configuration
+    passport.use(
+      new LocalStrategy(async (username, password, done) => {
+        try {
+          const [rows] = await db.query('SELECT * FROM Person WHERE username = ?', [username]);
+          if (rows.length === 0) return done(null, false, { message: 'No user with that username' });
+
+          const user = rows[0];
+          const match = await bcrypt.compare(password, user.password);
+          return match ? done(null, user) : done(null, false, { message: 'Password incorrect' });
+        } catch (err) {
+          return done(err);
+        }
+      })
+    );
+
+    passport.serializeUser((user, done) => done(null, user.id));
+    passport.deserializeUser(async (id, done) => {
+      try {
+        const [rows] = await db.query('SELECT * FROM Person WHERE id = ?', [id]);
+        return done(null, rows[0]);
+      } catch (err) {
+        return done(err);
+      }
+    });
+
+    // Routes
+    app.get('/', (req, res) => res.render('index.ejs', { user: req.user }));
+
+    app.get('/login', (req, res) => res.render('login.ejs'));
+
+    app.post(
+      '/login',
+      passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true,
+      })
+    );
+
+    app.get('/register', (req, res) => res.render('register.ejs'));
+
+    app.post('/register', async (req, res) => {
+      try {
+        const { first_name, last_name, dob, username, password, email, phone } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        await db.query(
+          'INSERT INTO Person (first_name, last_name, dob, username, password, email, phone) VALUES (?, ?, ?, ?, ?, ?, ?)',
+          [first_name, last_name, dob, username, hashedPassword, email, phone]
+        );
+        res.redirect('/login');
+      } catch (err) {
+        console.error(err);
+        res.redirect('/register');
+      }
+    });
+
+    app.delete('/logout', (req, res) => {
+      req.logOut(() => {
+        res.redirect('/login');
+      });
+    });
+
+    // Start the server
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  } catch (error) {
+    console.error('Error connecting to the database:', error);
+    process.exit(1);
   }
-  
-  function checkNotAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return res.redirect('/')
-    }
-    next()
-  }
-  
-  app.listen(3000)
+}
+
+// Initialize the application
+initializeApp();
