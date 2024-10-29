@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel="stylesheet" href="/css/nodejs.css">
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 20px;
+    }
+    .box {
+      background-color: #dff0e4;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+    .box p {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .box p.red {
+      color: red;
+    }
+    #bar-chart, #area-chart {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome, <%= user.first_name %>!</h1>
+
+  <div class="container">
+    <div class="box">
+      <h2>EVENT</h2>
+      <p class="<%= event.event_name === 'No Events' ? 'red' : '' %>">
+        <%= event.event_name %>
+      </p>
+    </div>
+    <div class="box">
+      <h2>VENUE</h2>
+      <p><%= event.venue_name %></p>
+    </div>
+    <div class="box">
+      <h2>GUESTS</h2>
+      <p><%= event.guest_count %></p>
+    </div>
+  </div>
+
+  <div id="bar-chart"></div>
+  <div id="area-chart"></div>
+
+  <script>
+    var guestCount = <%= event.guest_count %>;
+
+    var barChartOptions = {
+      series: [
+        { name: 'Assigned', data: [44, 55, 57, 56, 61, 58, 63, 60, 66] },
+        { name: 'Available', data: [76, 85, 101, 98, 87, 105, 91, 114, 94] },
+        { name: 'In Use', data: [35, 41, 36, 26, 45, 48, 52, 53, 41] }
+      ],
+      chart: { type: 'bar', height: 350, toolbar: { show: false } },
+      colors: ['#2e7d32', '#2962ff', '#d50000'],
+      plotOptions: { bar: { horizontal: false, columnWidth: '55%', endingShape: 'rounded' } },
+      xaxis: {
+        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        labels: { style: { colors: "#353535" } }
+      },
+      yaxis: {
+        title: { text: 'Number of Units', style: { color: "#353535" } }
+      }
+    };
+
+    var barChart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
+    barChart.render();
+
+    var areaChartOptions = {
+      series: [
+        { name: "Will Be In Attendance", data: [31, 40, 28, 51, 42, 109, guestCount] },
+        { name: "Unavailable", data: [11, 32, 45, 32, 34, 52, 41] }
+      ],
+      chart: { type: "area", height: 350 },
+      colors: ["#00ab57", "#d50000"],
+      xaxis: {
+        labels: { style: { colors: "#353535" } }
+      }
+    };
+
+    var areaChart = new ApexCharts(document.querySelector("#area-chart"), areaChartOptions);
+    areaChart.render();
+  </script>
+</body>
+</html>
