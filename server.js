@@ -13,8 +13,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static CSS files
+// Serve static CSS and JS files
 app.use('/css', express.static('css'));
+app.use('/js', express.static('js')); // Serve JavaScript files
 
 // Middleware setup
 app.set('view engine', 'ejs');
@@ -186,17 +187,16 @@ async function initializeApp() {
       }
     });
 
-      // Event deletion route
-  app.delete('/event/:id', ensureAuthenticated, async (req, res) => {
-    try {
-      await db.query('DELETE FROM Event WHERE id = ? AND created_by = ?', [req.params.id, req.user.id]);
-      res.redirect('/');
-    } catch (err) {
-      console.error('Error deleting event:', err);
-      res.redirect('/');
-    }
-  });
-
+    // Event deletion route
+    app.delete('/event/:id', ensureAuthenticated, async (req, res) => {
+      try {
+        await db.query('DELETE FROM Event WHERE id = ? AND created_by = ?', [req.params.id, req.user.id]);
+        res.redirect('/');
+      } catch (err) {
+        console.error('Error deleting event:', err);
+        res.redirect('/');
+      }
+    });
 
     // Start the server
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

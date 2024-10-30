@@ -2,23 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <link rel="stylesheet" href="/css/nodejs.css">
+  <link rel="stylesheet" href="/css/sidebar.css"> <!-- Sidebar CSS -->
 </head>
 <body>
-  <div class="container">
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/event">Create Event</a>
+    <form action="/logout?_method=DELETE" method="POST" style="display: inline;">
+      <button type="submit" class="sidebar-logout">Logout</button>
+    </form>
+  </div>
+
+  <!-- Main content -->
+  <div id="main" class="container">
+    <button class="openbtn" onclick="openSidebar()">☰ Menu</button>
+
     <h1>Welcome <%= user ? user.first_name : 'to project Black Lion' %>!</h1>
 
     <% if (user) { %>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/dashboard" style="margin-left: 10px;">Dashboard</a>
-        <a href="/event" style="margin-left: 10px;">Create Event</a>
-        <form action="/logout?_method=DELETE" method="POST" style="display: inline; margin-left: 10px;">
-          <button type="submit">Logout</button>
-        </form>
-      </nav>
-
       <h2>Your Events</h2>
       <% if (events.length > 0) { %>
         <ul>
@@ -41,10 +48,23 @@
       <% } else { %>
         <p>You haven't created any events yet. <a href="/event">Create one now!</a></p>
       <% } %>
-
     <% } else { %>
       <a href="/login">Login</a> | <a href="/register">Register</a>
     <% } %>
   </div>
+
+  <script>
+    // JavaScript to control the sidebar
+    function openSidebar() {
+      document.getElementById("sidebar").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeSidebar() {
+      document.getElementById("sidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+  </script>
+  
 </body>
 </html>
