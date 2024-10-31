@@ -5,12 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <link rel="stylesheet" href="/css/nodejs.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/sidebar.css"> <!-- Sidebar CSS -->
 </head>
 <body>
+
+  <header style="width: 100%; position: fixed; top: 0; left: 0; background-color: #f8f9fa; z-index: 1000; padding: 10px;">
+    <button class="openbtn" onclick="toggleSidebar()" style="display: inline-block; background-color: #007bff; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+      ☰ 
+    </button> 
+  </header>
+
   <!-- Sidebar -->
-  <div id="sidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+  <div id="sidebar" class="sidebar" style="top: 60px;"> <!-- Adjusted to avoid overlap -->
     <a href="/">Home</a>
     <a href="/dashboard">Dashboard</a>
     <a href="/event">Create Event</a>
@@ -20,9 +27,7 @@
   </div>
 
   <!-- Main content -->
-  <div id="main" class="container">
-    <button class="openbtn" onclick="openSidebar()">☰ Menu</button>
-
+  <div id="main" class="container" style="margin-top: 60px;"> <!-- Adjusted for top bar spacing -->
     <h1>Welcome <%= user ? user.first_name : 'to project Black Lion' %>!</h1>
 
     <% if (user) { %>
@@ -54,15 +59,18 @@
   </div>
 
   <script>
-    // JavaScript to control the sidebar
-    function openSidebar() {
-      document.getElementById("sidebar").style.width = "250px";
-      document.getElementById("main").style.marginLeft = "250px";
-    }
+    // JavaScript to toggle the sidebar
+    function toggleSidebar() {
+      var sidebar = document.getElementById("sidebar");
+      var main = document.getElementById("main");
 
-    function closeSidebar() {
-      document.getElementById("sidebar").style.width = "0";
-      document.getElementById("main").style.marginLeft = "0";
+      if (sidebar.style.width === "250px") {
+        sidebar.style.width = "0";
+        main.style.marginLeft = "0";
+      } else {
+        sidebar.style.width = "250px";
+        main.style.marginLeft = "250px";
+      }
     }
   </script>
   

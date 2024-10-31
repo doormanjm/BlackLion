@@ -3,9 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Register</title>
+  <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/nodejs.css">
+  <link rel="stylesheet" href="/css/sidebar.css">
 </head>
 <body>
+
+  <header style="width: 100%; position: fixed; top: 0; left: 0; background-color: #f8f9fa; z-index: 1000; padding: 10px;">
+    <button class="openbtn" onclick="toggleSidebar()" style="display: inline-block; background-color: #007bff; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+      ☰ 
+    </button>
+  </header>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar" style="top: 60px;"> <!-- Adjusted to avoid overlap -->
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/event">Create Event</a>
+    <form action="/logout?_method=DELETE" method="POST" style="display: inline;">
+      <button type="submit" class="sidebar-logout">Logout</button>
+    </form>
+  </div>
+
   <div class="container">
     <h1>Register</h1>
 
@@ -23,4 +42,21 @@
     <a href="/login">Login</a>
   </div>
 </body>
+
+<script>
+  // JavaScript to toggle the sidebar
+  function toggleSidebar() {
+    var sidebar = document.getElementById("sidebar");
+    var main = document.getElementById("main");
+
+    if (sidebar.style.width === "250px") {
+      sidebar.style.width = "0";
+      main.style.marginLeft = "0";
+    } else {
+      sidebar.style.width = "250px";
+      main.style.marginLeft = "250px";
+    }
+  }
+</script>
+
 </html>
