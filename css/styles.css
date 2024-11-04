@@ -94,10 +94,9 @@ img {
 
 .sidebar {
     grid-area: main;
-    margin-top: -20px;
-    padding-top: 90px;
+    padding-top: 70px;
     width: 250px;
-    height: 100%;
+    height:100%;
     position: absolute;
     top: 0;
     left: -257px;
