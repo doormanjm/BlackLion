@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Register</title>
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/nodejs.css">
   <link rel="stylesheet" href="/css/sidebar.css">
+  <meta charset="UTF-8">
+  <title>Create Event</title>
 </head>
 <body>
 
@@ -25,22 +25,38 @@
     </form>
   </div>
 
-  <div class="container">
-    <h1>Register</h1>
+  <h1>Create a New Event</h1>
+  <form action="/event" method="POST">
+    <h2>Event Details</h2>
+    <label for="name">Event Name:</label>
+    <input type="text" id="name" name="name" required><br>
 
-    <form action="/register" method="POST">
-      <input type="text" name="first_name" placeholder="First Name" required />
-      <input type="text" name="last_name" placeholder="Last Name" required />
-      <input type="date" name="dob" required />
-      <input type="text" name="username" placeholder="Username" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="text" name="phone" placeholder="Phone Number" required />
-      <button type="submit">Register</button>
-    </form>
+    <label for="event_date">Event Date:</label>
+    <input type="date" id="event_date" name="event_date" required><br>
 
-    <a href="/login">Login</a>
-  </div>
+    <label for="start_time">Start Time:</label>
+    <input type="time" id="start_time" name="start_time" required><br>
+
+    <label for="end_time">End Time:</label>
+    <input type="time" id="end_time" name="end_time" required><br>
+
+    <label for="guest_count">Guest Count:</label>
+    <input type="number" id="guest_count" name="guest_count" required><br>
+
+    <textarea name="details" rows="4" placeholder="Event Details..."></textarea><br>
+
+    <h2>Venue Details</h2>
+    <label for="venue_name">Venue Name:</label>
+    <input type="text" id="venue_name" name="venue_name" required><br>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" required><br>
+
+    <label for="max_capacity">Max Capacity:</label>
+    <input type="number" id="max_capacity" name="max_capacity" required><br>
+
+    <button type="submit">Create Event</button>
+  </form>
 </body>
 
 <script>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel="stylesheet" href="/css/nodejs.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/sidebar.css">
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 20px;
+    }
+    .box {
+      background-color: #dff0e4;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+    .box p {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .box p.red {
+      color: red;
+    }
+    #bar-chart, #area-chart {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header style="width: 100%; position: fixed; top: 0; left: 0; background-color: #f8f9fa; z-index: 1000; padding: 10px;">
+    <button class="openbtn" onclick="toggleSidebar()" style="display: inline-block; background-color: #007bff; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+      ☰ 
+    </button>
+  </header>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar" style="top: 60px;"> <!-- Adjusted to avoid overlap -->
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/event">Create Event</a>
+    <form action="/logout?_method=DELETE" method="POST" style="display: inline;">
+      <button type="submit" class="sidebar-logout">Logout</button>
+    </form>
+  </div>
+
+  <h1>Welcome, <%= user.first_name %>!</h1>
+
+  <div class="container">
+    <div class="box">
+      <h2>EVENT</h2>
+      <p class="<%= event.event_name === 'No Events' ? 'red' : '' %>">
+        <%= event.event_name %>
+      </p>
+    </div>
+    <div class="box">
+      <h2>VENUE</h2>
+      <p><%= event.venue_name %></p>
+    </div>
+    <div class="box">
+      <h2>GUESTS</h2>
+      <p><%= event.guest_count %></p>
+    </div>
+  </div>
+
+  <div id="bar-chart"></div>
+  <div id="area-chart"></div>
+
+  <script>
+    var guestCount = "<%= event.guest_count %>";
+
+    var barChartOptions = {
+      series: [
+        { name: 'Assigned', data: [44, 55, 57, 56, 61, 58, 63, 60, 66] },
+        { name: 'Available', data: [76, 85, 101, 98, 87, 105, 91, 114, 94] },
+        { name: 'In Use', data: [35, 41, 36, 26, 45, 48, 52, 53, 41] }
+      ],
+      chart: { type: 'bar', height: 350, toolbar: { show: false } },
+      colors: ['#2e7d32', '#2962ff', '#d50000'],
+      plotOptions: { bar: { horizontal: false, columnWidth: '55%', endingShape: 'rounded' } },
+      xaxis: {
+        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        labels: { style: { colors: "#353535" } }
+      },
+      yaxis: {
+        title: { text: 'Number of Units', style: { color: "#353535" } }
+      }
+    };
+
+    var barChart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
+    barChart.render();
+
+    var areaChartOptions = {
+      series: [
+        { name: "Will Be In Attendance", data: [31, 40, 28, 51, 42, 109, guestCount] },
+        { name: "Unavailable", data: [11, 32, 45, 32, 34, 52, 41] }
+      ],
+      chart: { type: "area", height: 350 },
+      colors: ["#00ab57", "#d50000"],
+      xaxis: {
+        labels: { style: { colors: "#353535" } }
+      }
+    };
+
+    var areaChart = new ApexCharts(document.querySelector("#area-chart"), areaChartOptions);
+    areaChart.render();
+  </script>
+
+  <script>
+    // JavaScript to toggle the sidebar
+    function toggleSidebar() {
+      var sidebar = document.getElementById("sidebar");
+      var main = document.getElementById("main");
+
+      if (sidebar.style.width === "250px") {
+        sidebar.style.width = "0";
+        main.style.marginLeft = "0";
+      } else {
+        sidebar.style.width = "250px";
+        main.style.marginLeft = "250px";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Register</title>
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/nodejs.css">
   <link rel="stylesheet" href="/css/sidebar.css">
+  <meta charset="UTF-8">
+  <title>Edit Event</title>
 </head>
 <body>
 
@@ -24,23 +24,28 @@
       <button type="submit" class="sidebar-logout">Logout</button>
     </form>
   </div>
+  
+  <h1>Edit Event</h1>
+  <form action="/event/<%= event.id %>?_method=PUT" method="POST">
+    <label for="name">Event Name:</label>
+    <input type="text" id="name" name="name" value="<%= event.name %>" required><br>
 
-  <div class="container">
-    <h1>Register</h1>
+    <label for="event_date">Event Date:</label>
+    <input type="date" id="event_date" name="event_date" value="<%= event.event_date.toISOString().split('T')[0] %>" required><br>
 
-    <form action="/register" method="POST">
-      <input type="text" name="first_name" placeholder="First Name" required />
-      <input type="text" name="last_name" placeholder="Last Name" required />
-      <input type="date" name="dob" required />
-      <input type="text" name="username" placeholder="Username" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="text" name="phone" placeholder="Phone Number" required />
-      <button type="submit">Register</button>
-    </form>
+    <label for="start_time">Start Time:</label>
+    <input type="time" id="start_time" name="start_time" value="<%= event.start_time %>" required><br>
 
-    <a href="/login">Login</a>
-  </div>
+    <label for="end_time">End Time:</label>
+    <input type="time" id="end_time" name="end_time" value="<%= event.end_time %>" required><br>
+
+    <label for="guest_count">Guest Count:</label>
+    <input type="number" id="guest_count" name="guest_count" value="<%= event.guest_count %>" required><br>
+
+    <textarea name="details" rows="4"><%= event.details %></textarea><br>
+
+    <button type="submit">Update Event</button>
+  </form>
 </body>
 
 <script>
