@@ -97,7 +97,7 @@ async function initializeApp() {
       }
     });
 
-    // Dashboard route
+    /* Dashboard route
     app.get('/dashboard', ensureAuthenticated, async (req, res) => {
       try {
         const [events] = await db.query(
@@ -116,6 +116,7 @@ async function initializeApp() {
         res.redirect('/');
       }
     });
+    */
 
     // Login routes
     app.get('/login', (req, res) => res.render('login.ejs', { message: req.flash('error') }));
@@ -194,6 +195,25 @@ async function initializeApp() {
       } catch (err) {
         console.error('Error updating event:', err);
         res.redirect(`/event/${req.params.id}/edit`);
+      }
+    });
+
+    // Dashboard route
+    app.get('/event/:id/dashboard', ensureAuthenticated, async (req, res) => {
+      try {
+        const [events] = await db.query(
+          `SELECT Event.id, Event.name, Event.event_date AS date, Event.start_time, Event.end_time, Event.details, Event.guest_count, Venue.name AS venue_name, Venue.Address AS address 
+            FROM Event
+            LEFT JOIN Venue ON Event.venue_id = Venue.id
+            WHERE Event.id = ? AND created_by = ? `,
+          [req.params.id, req.user.id]
+        );
+
+        const event = events.length > 0 ? events[0] : { event_name: 'No Events', venue_name: 'N/A', guest_count: 0 };
+        res.render('dashboard.ejs', { user: req.user, event: events[0] });
+      } catch (err) {
+        console.error('Error loading dashboard:', err);
+        res.redirect('/');
       }
     });
 
