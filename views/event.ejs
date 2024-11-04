@@ -1,78 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/nodejs.css">
-  <link rel="stylesheet" href="/css/sidebar.css">
-  <meta charset="UTF-8">
-  <title>Create Event</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;1,500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&style=filled">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Home</title>
+  </head>
+  <body>
 
-  <header style="width: 100%; position: fixed; top: 0; left: 0; background-color: #f8f9fa; z-index: 1000; padding: 10px;">
-    <button class="openbtn" onclick="toggleSidebar()" style="display: inline-block; background-color: #007bff; color: white; border: none; padding: 10px 20px; cursor: pointer;">
-      ☰ 
-    </button>
-  </header>
+    <!-- Header Start -->
+    <header class="header">
+      <div class="menu">
+          <span class="material-icons" onclick="toggleSidebar()">menu</span>
+          <div class="material-icons"><img src="resources/logo_lg.svg"></div>
+      </div>
+      <div class="header-right" style="padding-right:25px">
+          <a href="#" onclick="document.getElementById('logout-form').submit();" style="text-decoration: none; cursor: pointer;">
+            <span class="material-icons">account_circle</span>
+          </a>
+          <form id="logout-form" action="/logout?_method=DELETE" method="POST" style="display: none;"></form>        
+      </div>
+    </header>
+    <!-- Header End -->
 
-  <!-- Sidebar -->
-  <div id="sidebar" class="sidebar" style="top: 60px;"> <!-- Adjusted to avoid overlap -->
-    <a href="/">Home</a>
-    <a href="/dashboard">Dashboard</a>
-    <a href="/event">Create Event</a>
-    <form action="/logout?_method=DELETE" method="POST" style="display: inline;">
-      <button type="submit" class="sidebar-logout">Logout</button>
-    </form>
-  </div>
+    <!-- Body Start -->
+    <main class="main-container" id="main_container">
+      <div class="single-form-constrained">
+        <div class="login-card">
+          <div class="card-inner">
+            <h1>Create a New Event</h1>
+            <a href="#" onclick="document.getElementById('event-form').submit();" style="text-decoration: none; cursor: pointer;">
+              <span class="material-symbols-rounded">calendar_add_on</span>
+            </a>
+          </div>
+          <div>
+            <form id="event-form" action="/event" method="POST">
+              <div style="display: inline-block; vertical-align: top;">
+                <h2>Event Details</h2>
 
-  <h1>Create a New Event</h1>
-  <form action="/event" method="POST">
-    <h2>Event Details</h2>
-    <label for="name">Event Name:</label>
-    <input type="text" id="name" name="name" required><br>
+                <label for="name">Event Name:</label>
+                <input class="form-control" type="text" id="name" name="name" required>
 
-    <label for="event_date">Event Date:</label>
-    <input type="date" id="event_date" name="event_date" required><br>
+                <label for="event_date">Event Date:</label>
+                <input class="form-control" type="date" id="event_date" name="event_date" required>
 
-    <label for="start_time">Start Time:</label>
-    <input type="time" id="start_time" name="start_time" required><br>
+                <label for="start_time">Start Time:</label>
+                <input class="form-control" type="time" id="start_time" name="start_time" required>
 
-    <label for="end_time">End Time:</label>
-    <input type="time" id="end_time" name="end_time" required><br>
+                <label for="end_time">End Time:</label>
+                <input class="form-control" type="time" id="end_time" name="end_time" required>
 
-    <label for="guest_count">Guest Count:</label>
-    <input type="number" id="guest_count" name="guest_count" required><br>
+                <label for="guest_count">Guest Count:</label>
+                <input class="form-control" type="number" id="guest_count" name="guest_count" required>
 
-    <textarea name="details" rows="4" placeholder="Event Details..."></textarea><br>
+                <label for="details">Event Details:</label>
+                <textarea class="form-control" id="details" name="details" rows="4" placeholder="Event Details..."></textarea>
+              </div>
+              <div style="display: inline-block; vertical-align: top;"></div>
+              <div style="display: inline-block; vertical-align: top;">
+                <h2>Venue Details</h2>
+                
+                <label for="venue_name">Venue Name:</label>
+                <input class="form-control" type="text" id="venue_name" name="venue_name" required>
 
-    <h2>Venue Details</h2>
-    <label for="venue_name">Venue Name:</label>
-    <input type="text" id="venue_name" name="venue_name" required><br>
+                <label for="address">Address:</label>
+                <input class="form-control" type="text" id="address" name="address" required>
 
-    <label for="address">Address:</label>
-    <input type="text" id="address" name="address" required><br>
+                <label for="max_capacity">Max Capacity:</label>
+                <input class="form-control" type="number" id="max_capacity" name="max_capacity" required>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Body End -->
 
-    <label for="max_capacity">Max Capacity:</label>
-    <input type="number" id="max_capacity" name="max_capacity" required><br>
+    <!-- Nav Start -->
+    <nav class="sidebar" id="sidebar">
+      <ul class="list">
+          <li class="list-item">
+            <a href="/dashboard">
+              <span class="material-symbols-rounded">space_dashboard</span> DASHBOARD
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="/">
+              <span class="material-symbols-rounded">things_to_do</span> VENUES
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="/event">
+              <span class="material-symbols-rounded">event</span> PLANNING
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="#" onclick="document.getElementById('logout-form').submit();">
+              <span class="material-symbols-rounded">logout</span> LOGOUT
+            </a>
+          </li>
+      </ul>
+    </nav>
+    <!-- Nav End -->
 
-    <button type="submit">Create Event</button>
-  </form>
-</body>
-
-<script>
-  // JavaScript to toggle the sidebar
-  function toggleSidebar() {
-    var sidebar = document.getElementById("sidebar");
-    var main = document.getElementById("main");
-
-    if (sidebar.style.width === "250px") {
-      sidebar.style.width = "0";
-      main.style.marginLeft = "0";
-    } else {
-      sidebar.style.width = "250px";
-      main.style.marginLeft = "250px";
-    }
-  }
-</script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.40.0/apexcharts.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/table.js"></script>
+    <script src="js/card.js"></script>
+    
+  </body>
 </html>
