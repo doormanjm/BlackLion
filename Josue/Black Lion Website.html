@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Black Lion.css" rel="stylesheet" type="text/css" />
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <title>Black Lion</title>
+</head>
+
+<body>
+    <header>
+        <img src="Black Lion.PNG" alt="Black Lion" />
+
+        <div class="header-buttons">
+            <a href="Registration page.html">Sign Up</a>
+            <a href="Log-in.html">Sign In</a>
+        </div>
+    </header>
+
+    <div class="content">
+        <article>
+            <h1>Black Lion</h1>
+            <p>Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail. Unlike other event planning companies, Black Lion Group offers personalized services tailored to the unique needs and visions of each client. Their expertise in coordinating various types of events whether corporate gatherings, weddings, or community celebrations ensures that every aspect, from logistics to aesthetics, is handled flawlessly.</p>
+            <p>One of their standout experiences includes organizing a high-profile corporate retreat for a leading tech company, where they transformed a standard conference room into an immersive experience that reflected the company’s innovative culture. The team handled everything from custom decor to interactive workshops, resulting in overwhelmingly positive feedback from attendees and executives alike.</p>
+            <p>By leveraging their extensive network of vendors and resources, Black Lion Group delivers exceptional events that leave lasting impressions, positioning themselves as the go-to choice for anyone seeking unforgettable experiences.</p>
+            <h2>Mission</h2>
+            <p>To craft memorable and exceptional events that reflect our clients' visions while providing unparalleled service and attention to detail.</p>
+            <h2>Vision</h2>
+            <p>To be recognized as the premier event planning group, renowned for our creativity, innovation, and commitment to delivering extraordinary experiences that exceed client expectations.</p>
+        </article>
+
+        <div class="event-links">
+            <h2>Upcoming Events</h2>
+            <div class="event-card">
+                <img src="happy-birthday-candles-picture-id1202880334.JPG" alt="Birthday">
+                <div class="event-info">
+                    <h3>Birthdays</h3>
+                    <p>Celebrate life’s milestones with unique, personalized events.</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="party.JPG" alt="Party">
+                <div class="event-info">
+                    <h3>Parties</h3>
+                    <p>Make your gatherings memorable with extraordinary planning.</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="wedding.JPG" alt="Wedding">
+                <div class="event-info">
+                    <h3>Weddings</h3>
+                    <p>Create unforgettable moments on your special day.</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="Other.jpg" alt="Other">
+                <div class="event-info">
+                    <h3>Other Events</h3>
+                    <p>Let us handle all types of events with ease and professionalism.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="world-clock">
+        <h2>World Clock</h2>
+        <div class="city">
+            <span class="city-name">New York:</span>
+            <span id="new-york-time"></span>
+        </div>
+        <div class="city">
+            <span class="city-name">London:</span>
+            <span id="london-time"></span>
+        </div>
+        <div class="city">
+            <span class="city-name">Tokyo:</span>
+            <span id="tokyo-time"></span>
+        </div>
+        <div class="city">
+            <span class="city-name">Sydney:</span>
+            <span id="sydney-time"></span>
+        </div>
+    </div>
+
+    <script>
+             function updateWorldClock() {
+            const now = new Date();
+
+            
+            const newYorkTime = now.toLocaleString("en-US", {
+                timeZone: "America/New_York",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+            document.getElementById("new-york-time").textContent = newYorkTime;
+
+            
+            const londonTime = now.toLocaleString("en-GB", {
+                timeZone: "Europe/London",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+            document.getElementById("london-time").textContent = londonTime;
+
+            
+            const tokyoTime = now.toLocaleString("en-JP", {
+                timeZone: "Asia/Tokyo",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+            document.getElementById("tokyo-time").textContent = tokyoTime;
+
+            
+            const sydneyTime = now.toLocaleString("en-AU", {
+                timeZone: "Australia/Sydney",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+            document.getElementById("sydney-time").textContent = sydneyTime;
+        }
+
+       
+        setInterval(updateWorldClock, 1000);
+        
+        updateWorldClock();
+    </script>
+</body>
+
+</html>

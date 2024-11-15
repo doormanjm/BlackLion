@@ -1,0 +1,62 @@
+
+body {
+    background-color: beige;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: url(dw.png) top left no-repeat;
+    margin-bottom: 20px;
+ }
+
+header {
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header div {
+    font-size: 11px;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+ }
+
+ header div input[type='button'] {
+    text-align: center;
+    width: 60px;
+ }
+
+ header nav.horizontal {
+    border: 1px solid rgb(192, 192, 192);
+ 
+ 
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+ 
+ 
+    height: 38px;
+    width: 98%;
+    margin: 0px 1%;
+ }
+article {
+    width: 60%;
+    margin: 20px auto;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+article 1 {
+    width: 60%;
+    margin: 20px auto;
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
