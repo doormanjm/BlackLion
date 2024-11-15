@@ -1,4 +1,4 @@
-/* General styling for the body */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,7 +7,7 @@ body {
     color: #333;
 }
 
-/* Header styling */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -86,7 +86,7 @@ header img {
     color: #666;
 }
 
-/* Styling for the world clock */
+
 #world-clock {
     max-width: 500px;
     margin: 30px auto; /* Centers the clock */
