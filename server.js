@@ -11,7 +11,6 @@ import { Strategy as LocalStrategy } from 'passport-local';
 dotenv.config();
 
 const app = express();
-const ADDRESS = process.env.ADDRESS || '192.168.4.2';
 const PORT = process.env.PORT || 80;
 
 // Serve static files
@@ -38,10 +37,10 @@ app.use(methodOverride('_method'));
 async function initializeApp() {
   try {
     const db = await mysql.createConnection({
-      host: 'blacklion2.c7akkamimqmc.us-east-1.rds.amazonaws.com',
-      user: 'admin',
-      password: 'Passw0rd',
-      database: 'Blacklion2',
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
     });
 
     console.log('Connected to AWS RDS Database');

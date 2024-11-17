@@ -94,9 +94,8 @@ img {
 
 .sidebar {
     grid-area: main;
-    padding-top: 70px;
     width: 250px;
-    height:100%;
+    height: 100vh;
     position: absolute;
     top: 0;
     left: -257px;
@@ -135,8 +134,8 @@ a {
 
 .main-container {
     grid-area: main;
-    position: relative;
-    width: fit-content;
+    position: absolute;
+    width: auto;
     padding: 70px 30px;
     transition: left 0.3s ease-in-out;
     left: 0;
@@ -177,9 +176,11 @@ a {
 }
 
 .single-form-center{
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
+    display: flex;
+    vertical-align: middle;
+    align-self: center;
+    justify-self: center;
+    width: fit-content;
     gap: 20px;
     margin: 20px 0;
 }
