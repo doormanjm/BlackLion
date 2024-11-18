@@ -14,7 +14,6 @@
     <title>Home</title>
   </head>
   <body>
-
     <!-- Header Start -->
     <header class="header">
       <div class="menu">
@@ -22,11 +21,24 @@
         <div class="material-icons"><img src="/resources/logo_lg.svg"></div>
       </div>
       <div class="header-right" style="padding-right:25px;">
-        <p style="display: inline-block;"><%= user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1) %></p>
-        <a href="#" onclick="document.getElementById('logout-form').submit();" style="display: inline-block; text-decoration: none; cursor: pointer;">
-          <span class="material-icons">account_circle</span>
-        </a>
-        <form id="logout-form" action="/logout?_method=DELETE" method="POST" style="display: none;"></form>        
+        <% if (user != null) { %>
+          <p style="display: inline-block;"><%= user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1) %></p>
+          <a href="#" onclick="toggleMenu()" style="display: inline-block; text-decoration: none; cursor: pointer;">
+            <span class="material-icons">account_circle</span>
+          </a>
+          <div id="context-menu" class="context-menu">
+            <ul>
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a></li>
+            </ul>
+          </div>
+        <% } else {%>
+          <p style="display: inline-block;">Sign In</p>
+          <a href="#" onclick="document.getElementById('logout-form').submit();" style="display: inline-block; text-decoration: none; cursor: pointer;">
+            <span class="material-icons">account_circle</span>
+          </a>      
+        <% }%>
+        <form id="logout-form" action="/logout?_method=DELETE" method="POST" style="display: none;"></form>
       </div>
     </header>
     <!-- Header End -->
@@ -85,10 +97,15 @@
 
     <!-- Nav Start -->
     <nav class="sidebar" id="sidebar">
-      <ul class="list" style="margin-top: 80px;">
+      <ul class="list">
         <li class="list-item">
           <a href="/">
             <span class="material-symbols-rounded">home</span> HOME
+          </a>
+        </li><br>
+        <li class="list-item">
+          <a href="/home">
+            <span class="material-symbols-rounded">upcoming</span> MY EVENTS
           </a>
         </li><br>
         <li class="list-item">
@@ -96,15 +113,10 @@
             <span class="material-symbols-rounded">event</span> PLANNING
           </a>
         </li><br>
-        <li class="list-item">
-          <a href="#" onclick="document.getElementById('logout-form').submit();">
-            <span class="material-symbols-rounded">logout</span> LOGOUT
-          </a>
-        </li>
       </ul>
     </nav>
     <!-- Nav End -->
-
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.40.0/apexcharts.min.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/chart.js"></script>
@@ -112,6 +124,7 @@
     <script src="/js/sidebar.js"></script>
     <script src="/js/table.js"></script>
     <script src="/js/card.js"></script>
-    
+    <script src="/js/world_clock.js"></script>
+    <script src="/js/contextMenu.js"></script>
   </body>
 </html>

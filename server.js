@@ -74,11 +74,11 @@ async function initializeApp() {
     // Middleware to ensure routes are accessible only to logged-in users
     function ensureAuthenticated(req, res, next) {
       if (req.isAuthenticated()) return next();
-      res.redirect('/login');
+      res.redirect('/');
     }
 
     // Home route showing user-specific events
-    app.get('/', ensureAuthenticated, async (req, res) => {
+    app.get('/home', ensureAuthenticated, async (req, res) => {
       try {
         const [events] = await db.query(
           `SELECT Event.id, Event.name, Event.event_date AS date, Event.start_time, Event.end_time, Event.details, Event.guest_count, Venue.name AS venue_name, Venue.Address AS address 
@@ -96,26 +96,8 @@ async function initializeApp() {
       }
     });
 
-    /* Dashboard route
-    app.get('/dashboard', ensureAuthenticated, async (req, res) => {
-      try {
-        const [events] = await db.query(
-          `SELECT Event.name AS event_name, Venue.name AS venue_name, Event.guest_count 
-           FROM Event 
-           LEFT JOIN Venue ON Event.venue_id = Venue.id 
-           WHERE Event.created_by = ? 
-           ORDER BY Event.id DESC LIMIT 1`,
-          [req.user.id]
-        );
-
-        const event = events.length > 0 ? events[0] : { event_name: 'No Events', venue_name: 'N/A', guest_count: 0 };
-        res.render('dashboard.ejs', { user: req.user, event });
-      } catch (err) {
-        console.error('Error loading dashboard:', err);
-        res.redirect('/');
-      }
-    });
-    */
+    app.get('/', (req, res) => res.render('landing.ejs', { user: req.user}));
+    app.post('/');
 
     // Login routes
     app.get('/login', (req, res) => res.render('login.ejs', { message: req.flash('error') }));

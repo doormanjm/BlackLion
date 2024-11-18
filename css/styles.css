@@ -8,7 +8,8 @@ body {
     font-family: 'Jost', sans-serif;
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
-    overflow-y: scroll; 
+    overflow-y: scroll;
+    display: flex;
 }
 body::-webkit-scrollbar {
     display: none; /* for Chrome, Safari, and Opera */
@@ -92,25 +93,30 @@ img {
     height: 35px;
 }
 
+.floating-img {
+    grid-template-rows: auto;
+    border-radius: 8px;
+}
+
 .sidebar {
     grid-area: main;
     width: 250px;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -257px;
     background-color: #FAD4C0;
     transition: left 0.3s ease-in-out;
     box-shadow: 7px 8px 8px 0 rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
 }
 
 .sidebar.open {
     left: 0;
 }
 
-
-
 .list {
+    margin-top: 80px;
     list-style-type: none;
 }
 
@@ -234,6 +240,12 @@ a {
     margin: 0px 0px 0px 3px;
     right: 0;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.card-buttons-other{
+    margin: 0px 0px 0px 3px;
+    right: 0;
     align-items: center;
 }
 
@@ -422,6 +434,40 @@ textarea {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; 
 }
+
+.context-menu {
+    display: none;
+    position: absolute;
+    border-radius: 8px;
+    top: 55px; /* Adjust this based on the header height */
+    right: 25px; /* Aligns the menu with the icon */
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    min-width: 150px; /* Minimum width for the menu */
+  }
+  
+.context-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+  
+.context-menu ul li {
+    padding: 8px 12px;
+}
+  
+.context-menu ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+  
+.context-menu ul li:hover {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+  
 
 @media screen and (max-width: 768px) {
     .main-cards {
