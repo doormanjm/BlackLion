@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&style=filled">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/landing.css">
     <title>Login</title>
   </head>
   
@@ -33,9 +32,11 @@
 
     <!-- Body Start -->
     <main class="main-container" id="main_container">
-        <div class="content-with-bg">
-          <div class="login-form">
+      <div class="single-form-center">
+        <div class="login-card">
+          <div class="card-inner">
             <h1>Sign-In</h1>
+          </div>
             <% if (message) { %>
               <p style="color: red;"><%= message %></p>
             <% } %>
@@ -47,16 +48,18 @@
               <input class="form-control" type="password" name="password" onkeydown="submitForm()" placeholder="Password" required />
             </form>
             <br>
-            <div class="card-buttons" style="width: 100%;">
+            <div class="card-inner"></div>
+            <div class="card-buttons">
               <a href="/register" >
                 <span class="material-icons">person_add</span> REGISTER
               </a>
               <a href="#" onclick="document.getElementById('login-form').submit();">
                 <span class="material-icons">login</span> LOG-IN
               </a>
-            </div>  
+            </div>
           </div>
         </div>
+      </div>
     </main>
     <!-- Body End -->
 

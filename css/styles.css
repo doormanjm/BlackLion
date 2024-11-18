@@ -236,11 +236,11 @@ a {
 
 
 .card-buttons{
-    display: grid;
-    margin: 0px 0px 0px 3px;
-    right: 0;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: space-evenly;
+    align-content: center;
 }
 
 .card-buttons-other{

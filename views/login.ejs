@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&style=filled">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/landing.css">
     <title>Login</title>
   </head>
   
@@ -32,23 +33,20 @@
 
     <!-- Body Start -->
     <main class="main-container" id="main_container">
-      <div class="single-form-center">
-        <div class="login-card">
-          <div class="card-inner">
+        <div class="content-with-bg2">
+          <div class="login-form">
             <h1>Sign-In</h1>
-          </div>
             <% if (message) { %>
               <p style="color: red;"><%= message %></p>
             <% } %>
-            <form id="login-form" action="/login" method="POST">
+            <form class="login-form-inner" id="login-form" action="/login" method="POST">
               <label>Username</label>
               <input class="form-control" name="username" placeholder="Username" required />
               <br>
               <label>Password</label>
               <input class="form-control" type="password" name="password" onkeydown="submitForm()" placeholder="Password" required />
             </form>
-            <br>
-            <div class="card-inner"></div>
+            <p style="visibility: hidden;">Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail. Unlike other event planning companies, Black Lion Group offers personalized services tailored to the unique needs and visions of each client. Their expertise in coordinating various types of events whether corporate gatherings, weddings, or community celebrations ensures that every aspect, from logistics to aesthetics, is handled flawlessly.</p>
             <div class="card-buttons">
               <a href="/register" >
                 <span class="material-icons">person_add</span> REGISTER
@@ -56,10 +54,9 @@
               <a href="#" onclick="document.getElementById('login-form').submit();">
                 <span class="material-icons">login</span> LOG-IN
               </a>
-            </div>
+            </div>  
           </div>
         </div>
-      </div>
     </main>
     <!-- Body End -->
 
