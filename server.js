@@ -157,7 +157,68 @@ async function initializeApp() {
       req.logOut(() => res.redirect('/login'));
     });
 
+    // Profile page route
+app.get('/profile', ensureAuthenticated, (req, res) => {
+  res.render('profile.ejs', { user: req.user });
+});
 
+// Update profile route
+app.post('/profile', ensureAuthenticated, async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const hashedPassword = password ? await bcrypt.hash(password, 10) : req.user.password;
+
+    await pool.query(
+      'UPDATE Person SET email = ?, password = ? WHERE id = ?',
+      [email, hashedPassword, req.user.id]
+    );
+
+    res.redirect('/profile');
+  } catch (err) {
+    console.error('Error updating profile:', err);
+    res.redirect('/profile');
+  }
+});
+
+// Edit profile page
+app.get('/edit-profile', ensureAuthenticated, (req, res) => {
+  res.render('edit-profile.ejs', { user: req.user, message: '' });
+});
+
+app.post('/edit-profile', ensureAuthenticated, async (req, res) => {
+  try {
+    // Fetch the current user data to retain unmodified values
+    const [currentUserData] = await pool.query('SELECT * FROM Person WHERE id = ?', [req.user.id]);
+    const currentUser = currentUserData[0];
+    
+    // Destructure the request body and fall back to existing values if fields are empty
+    const {
+      first_name = currentUser.first_name,
+      last_name = currentUser.last_name,
+      email = currentUser.email,
+      phone = currentUser.phone,
+      password
+    } = req.body;
+
+    // Hash the password only if it was provided; otherwise, keep the existing password
+    const hashedPassword = password ? await bcrypt.hash(password, 10) : currentUser.password;
+
+    // Update the database with modified or retained values (excluding dob)
+    await pool.query(
+      'UPDATE Person SET first_name = ?, last_name = ?, email = ?, phone = ?, password = ? WHERE id = ?',
+      [first_name, last_name, email, phone, hashedPassword, req.user.id]
+    );
+
+    // Redirect back to profile with a success message
+    res.render('profile.ejs', { 
+      user: { ...req.user, first_name, last_name, email, phone }, 
+      message: 'Changes have been successfully applied.' 
+    });
+  } catch (err) {
+    console.error('Error updating profile:', err);
+    res.redirect('/edit-profile');
+  }
+});
 
     // Event creation routes
     app.get('/event', ensureAuthenticated, (req, res) => res.render('event.ejs', { user: req.user }));
