@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="edit-profile-container">
+    <h1>Edit Profile</h1>
+    <% if (typeof message !== 'undefined') { %>
+      <p class="success-message"><%= message %></p>
+    <% } %>
+    <form action="/edit-profile" method="POST">
+      <label for="first_name">First Name:</label>
+      <input type="text" id="first_name" name="first_name" value="<%= user.first_name %>">
+      
+      <label for="last_name">Last Name:</label>
+      <input type="text" id="last_name" name="last_name" value="<%= user.last_name %>">
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" value="<%= user.email %>">
+      
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" value="<%= user.phone %>">
+      
+      <label for="password">New Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter new password (optional)">
+      
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+</body>
+</html>

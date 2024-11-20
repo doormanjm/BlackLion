@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;1,500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&style=filled">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/css/styles.css">
+  <title>Profile</title>
+</head>
+<body>
+
+  <!-- Header Start -->
+  <header class="header">
+    <div class="menu">
+      <span class="material-icons" onclick="toggleSidebar()">menu</span>
+      <div class="material-icons"><img src="/images/logo_lg.svg"></div>
+    </div>
+    <div class="header-right" style="padding-right:25px;">
+      <p style="display: inline-block;"><%= user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1) %></p>
+      <a href="#" onclick="document.getElementById('logout-form').submit();" style="display: inline-block; text-decoration: none; cursor: pointer;">
+        <span class="material-icons">account_circle</span>
+      </a>
+      <form id="logout-form" action="/logout?_method=DELETE" method="POST" style="display: none;"></form>        
+    </div>
+  </header>
+  <!-- Header End -->
+
+  <div class="profile-container">
+    <h1>User Profile</h1>
+    <table>
+      <tr>
+        <th>First Name</th>
+        <td><%= user.first_name %></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><%= user.last_name %></td>
+      </tr>
+      <tr>
+        <th>Date of Birth</th>
+        <td><%= user.dob %></td>
+      </tr>
+      <tr>
+        <th>Username</th>
+        <td><%= user.username %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= user.email %></td>
+      </tr>
+      <tr>
+        <th>Phone</th>
+        <td><%= user.phone %></td>
+      </tr>
+    </table>
+    <button onclick="window.location.href='/edit-profile'">Edit Profile</button>
+  </div>
+  
+  <!-- Nav Start -->
+  <nav class="sidebar" id="sidebar">
+    <ul class="list">
+      <li class="list-item">
+        <a href="/">
+          <span class="material-symbols-rounded">home</span> HOME
+        </a>
+      </li><br>
+      <li class="list-item">
+        <a href="/event">
+          <span class="material-symbols-rounded">event</span> PLANNING
+        </a>
+      </li><br>
+      <li><a href="/profile">Profile</a></li>
+      <li class="list-item">
+        <a href="#" onclick="document.getElementById('logout-form').submit();">
+          <span class="material-symbols-rounded">logout</span> LOGOUT
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Nav End -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.40.0/apexcharts.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/chart.js"></script>
+    <script src="/js/camera.js"></script>
+    <script src="/js/sidebar.js"></script>
+    <script src="/js/table.js"></script>
+    <script src="/js/card.js"></script>
+</body>
+</html>
