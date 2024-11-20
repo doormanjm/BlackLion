@@ -41,6 +41,22 @@
     display: flex;
 }
 
+.content-with-bg3 {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    grid-template-rows: auto;
+    background-image: url(/resources/bg3.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 85vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
 /* Styling for the event-links section */
 .event-links {
     margin-top: 30px;
@@ -137,6 +153,15 @@ article {
     justify-content: center;
 }
 
+.event-form-inner {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .login-form-inner label {
+    font-weight: bold;
+}
+
+.event-form-inner label {
     font-weight: bold;
 }

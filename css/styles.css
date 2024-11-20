@@ -241,9 +241,9 @@ a {
 }
 
 .card-inner {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
+    vertical-align: middle;
 }
 
 .camera-inner {
@@ -399,9 +399,16 @@ textarea {
     border: none !important;
 }
 
+.vertical-separator {
+    border-left: 1px solid #ced4da; /* Adjust the color and width as needed */
+    height: 100%; /* Ensure the separator spans the full height */
+    margin: 0 20px; /* Add some horizontal margin to space out the divs */
+}
+
 .form-control {
     display: block;
-    width: auto;
+    width: 100%;  /* Ensure full width */
+    min-width: 500px;  /* Restrict maximum width to 500px */
     margin-left: 10px;
     margin-right: 10px;
     height: calc(1.5em + 0.75rem + 2px);
@@ -418,8 +425,14 @@ textarea {
     transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; 
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    box-sizing: border-box;  /* Include padding and borders in element's total width and height */
 }
+
+textarea.form-control {
+    resize: none;  /* Prevents manual resizing */
+}
+
 
 .form-control-profile {
     display: block;

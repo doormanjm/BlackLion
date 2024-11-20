@@ -78,7 +78,7 @@ async function initializeApp() {
     }
 
     // Home route showing user-specific events
-    app.get('/home', ensureAuthenticated, async (req, res) => {
+    app.get('/my_events', ensureAuthenticated, async (req, res) => {
       try {
         const [events] = await db.query(
           `SELECT Event.id, Event.name, Event.event_date AS date, Event.start_time, Event.end_time, Event.details, Event.guest_count, Venue.name AS venue_name, Venue.Address AS address 
@@ -104,7 +104,7 @@ async function initializeApp() {
     app.post(
       '/login',
       passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/my_events',
         failureRedirect: '/login',
         failureFlash: true,
       })
@@ -151,7 +151,7 @@ async function initializeApp() {
         res.redirect('/profile');
       }
     });
-    
+
     // Logout route
     app.delete('/logout', (req, res) => {
       req.logOut(() => res.redirect('/login'));
@@ -173,7 +173,7 @@ async function initializeApp() {
           'INSERT INTO Event (name, venue_id, event_date, start_time, end_time, guest_count, details, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
           [name, venue_id, event_date, start_time, end_time, guest_count, details, req.user.id]
         );
-        res.redirect('/');
+        res.redirect('/my_events');
       } catch (err) {
         console.error('Error creating event:', err);
         res.redirect('/event');
@@ -188,7 +188,7 @@ async function initializeApp() {
         res.render('edit-event.ejs', { user: req.user, event: events[0] });
       } catch (err) {
         console.error('Error fetching event for edit:', err);
-        res.redirect('/');
+        res.redirect('/my_events');
       }
     });
 
@@ -199,7 +199,7 @@ async function initializeApp() {
           'UPDATE Event SET name = ?, event_date = ?, start_time = ?, end_time = ?, guest_count = ?, details = ? WHERE id = ? AND created_by = ?',
           [name, event_date, start_time, end_time, guest_count, details, req.params.id, req.user.id]
         );
-        res.redirect('/home');
+        res.redirect('/my_events');
       } catch (err) {
         console.error('Error updating event:', err);
         res.redirect(`/event/${req.params.id}/edit`);
@@ -221,7 +221,7 @@ async function initializeApp() {
         res.render('dashboard.ejs', { user: req.user, event: events[0] });
       } catch (err) {
         console.error('Error loading dashboard:', err);
-        res.redirect('/');
+        res.redirect('/my_events');
       }
     });
 
@@ -229,10 +229,10 @@ async function initializeApp() {
     app.delete('/event/:id', ensureAuthenticated, async (req, res) => {
       try {
         await db.query('DELETE FROM Event WHERE id = ? AND created_by = ?', [req.params.id, req.user.id]);
-        res.redirect('/');
+        res.redirect('/my_events');
       } catch (err) {
         console.error('Error deleting event:', err);
-        res.redirect('/');
+        res.redirect('/my_events');
       }
     });
 
