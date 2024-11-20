@@ -22,6 +22,28 @@ function submitForm(event) {
     }
 }
 
+function toggleProfileEditInputs() { 
+    const input1 = document.getElementById('first_name');
+    const input2 = document.getElementById('last_name');
+    const input3 = document.getElementById('email');
+    const input4 = document.getElementById('phone');
+    const input5 = document.getElementById('password');
+    const input6 = document.getElementById('username');
+
+    input1.disabled = !input1.disabled;
+    input2.disabled = !input2.disabled;
+    input3.disabled = !input3.disabled;
+    input4.disabled = !input4.disabled;
+    input5.disabled = !input5.disabled;
+    input6.disabled = !input6.disabled;
+
+    if (saveButton.style.visibility === "hidden") { 
+        saveButton.style.visibility = "visible"; 
+    } else { 
+        saveButton.style.visibility = "hidden"; 
+    }
+}
+
 function send() {
   var myHeaders = new Headers();
   myHeaders.append("Authorization", "Basic ");

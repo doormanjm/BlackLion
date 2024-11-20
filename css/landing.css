@@ -136,3 +136,7 @@ article {
     align-items: center;
     justify-content: center;
 }
+
+.login-form-inner label {
+    font-weight: bold;
+}

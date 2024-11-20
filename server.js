@@ -127,10 +127,37 @@ async function initializeApp() {
       }
     });
 
+    // Home route showing user-specific events
+    app.get('/profile', ensureAuthenticated, async (req, res) => res.render('profile.ejs', { user: req.user }));
+    app.put('/profile', ensureAuthenticated, async (req, res) => {
+      try {
+        const { first_name, last_name, email, phone, username, password } = req.body;
+    
+        let updateQuery = 'UPDATE Person SET first_name = ?, last_name = ?, email = ?, phone = ?, username = ?';
+        let queryParams = [first_name, last_name, email, phone, username, req.user.id];
+    
+        if (password) {
+          const hashedPassword = await bcrypt.hash(password, 10);
+          updateQuery += ', password = ?';
+          queryParams.splice(queryParams.length - 1, 0, hashedPassword); // Insert the hashed password before the user ID
+        }
+    
+        updateQuery += ' WHERE id = ?';
+    
+        await db.query(updateQuery, queryParams);
+        res.redirect('/profile');
+      } catch (err) {
+        console.error('Error updating person:', err);
+        res.redirect('/profile');
+      }
+    });
+    
     // Logout route
     app.delete('/logout', (req, res) => {
       req.logOut(() => res.redirect('/login'));
     });
+
+
 
     // Event creation routes
     app.get('/event', ensureAuthenticated, (req, res) => res.render('event.ejs', { user: req.user }));
@@ -172,7 +199,7 @@ async function initializeApp() {
           'UPDATE Event SET name = ?, event_date = ?, start_time = ?, end_time = ?, guest_count = ?, details = ? WHERE id = ? AND created_by = ?',
           [name, event_date, start_time, end_time, guest_count, details, req.params.id, req.user.id]
         );
-        res.redirect('/');
+        res.redirect('/home');
       } catch (err) {
         console.error('Error updating event:', err);
         res.redirect(`/event/${req.params.id}/edit`);

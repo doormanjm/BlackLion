@@ -54,21 +54,8 @@ main::-webkit-scrollbar {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: .15fr 3fr;
-    grid-template-areas:
-        "header header header header"
-        "main main main main";
-    height: 100vh;
-}
-.grid-container.open {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: .2fr 3fr;
-    grid-template-areas:
-        "header header header header"
-        "main main main main";
-    height: 100vh;
+    grid-template-columns: 10fr 10fr 10fr;
+    column-width: auto;
 }
 
 .header{
@@ -139,7 +126,6 @@ a {
 }
 
 .main-container {
-    grid-area: main;
     position: absolute;
     width: auto;
     padding: 70px 30px;
@@ -433,6 +419,40 @@ textarea {
     -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; 
+}
+
+.form-control-profile {
+    display: block;
+    width: 500px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; 
+}
+
+.form-control:disabled { 
+    background-color: #e9ecef; 
+    border-color: #ced4da; 
+    color: #6c757d;
+}
+
+.form-control-profile:disabled { 
+    background-color: #e9ecef; 
+    border-color: #ced4da; 
+    color: #6c757d;
 }
 
 .context-menu {
