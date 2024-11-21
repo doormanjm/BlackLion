@@ -53,7 +53,7 @@
               <h2 style="text-align: center;">My Events</h2>
               <% if (events.length > 0) { %>
                 <% events.forEach(event => { %>
-                  <div class="event-card" style="display: flex; justify-content: space-evenly;">
+                  <div class="event-card" style="display: flex; justify-content: space-between;">
                     <div class="icon icon-shape background-red text-primary" >
                       <a href="/event/<%= event.id %>/dashboard"><span class="material-icons">celebration</span></a>
                     </div>
@@ -64,8 +64,13 @@
                     <div class="event-info">
                       <p><%= event.date.toDateString() %></p>
                     </div>
-                    <div class="icon icon-shape background-red text-primary" >
-                      <a href="/event/<%= event.id %>/edit"><span class="material-icons"> edit</span></a>
+                    <div class="icon icon-shape background-red text-primary">
+                      <a href="/event/<%= event.id %>/edit"><span class="material-icons" style="margin-right: 15px;"> edit</span></a>
+                      <form action="/event/<%= event.id %>?_method=DELETE" method="POST">
+                        <button class="invs-btn" onclick="return confirm('Are you sure you want to delete this event?')">
+                          <span class="material-icons"> delete</span>
+                        </button>
+                      </form>
                     </div>
                   </div>
                 <% }) %>
