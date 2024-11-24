@@ -50,8 +50,8 @@
       <div class="content-with-bg2">
         <div class="login-form">
             <h1>Create a New Event</h1>
-            <form class="event-form-inner" id="event-form" action="/event" method="POST" style="display: inline-flex; vertical-align: top;">
-              <div style="vertical-align: top;">
+            <form class="event-form-inner" id="event-form" action="/event" method="POST">
+              <div class="subform">
                 <h2>Event Details</h2>
 
                 <label for="name">Event Name:</label>
@@ -73,7 +73,7 @@
                 <textarea class="form-control" id="details" name="details" rows="4" placeholder="Event Details..."></textarea>
               </div>
               <div class="vertical-separator"></div>
-              <div style="vertical-align: top;">
+              <div class="subform">
                 <h2>Venue Details</h2>
                 
                 <label for="venue_name">Venue Name:</label>
@@ -86,7 +86,7 @@
                 <input class="form-control" type="number" id="max_capacity" name="max_capacity" required>
               </div>
             </form>
-            <p style="visibility: hidden;">Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail. Unlike other event planning companies, Black Lion Group offers personalized services tailored to the unique needs and visions of each client. Their expertise in coordinating various types of events ensures that every aspect, from logistics to aesthetics, is handled flawlessly.</p>
+            <p class="hidden-text">Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail. Unlike other event planning companies, Black Lion Group offers personalized services tailored to the unique needs and visions of each client. Their expertise in coordinating various types of events ensures that every aspect, from logistics to aesthetics, is handled flawlessly.</p>
             <div style="margin-top: 20px;">
               <a href="#" onclick="document.getElementById('event-form').submit();" style="text-decoration: none; cursor: pointer;">
                 <span class="material-symbols-rounded">calendar_add_on</span> ADD EVENT

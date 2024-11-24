@@ -408,7 +408,7 @@ textarea {
 .form-control {
     display: block;
     width: 100%;  /* Ensure full width */
-    min-width: 500px;  /* Restrict maximum width to 500px */
+    min-width: 65%;  /* Restrict maximum width to 500px */
     margin-left: 10px;
     margin-right: 10px;
     height: calc(1.5em + 0.75rem + 2px);
@@ -436,7 +436,7 @@ textarea.form-control {
 
 .form-control-profile {
     display: block;
-    width: 500px;
+    width: 65%;
     margin-left: 10px;
     margin-right: 10px;
     height: calc(1.5em + 0.75rem + 2px);
@@ -478,7 +478,7 @@ textarea.form-control {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
     min-width: 150px; /* Minimum width for the menu */
-  }
+}
   
 .context-menu ul {
     list-style-type: none;
@@ -500,9 +500,27 @@ textarea.form-control {
     background-color: #f0f0f0;
     border-radius: 8px;
 }
+
+.hidden-text {
+    visibility: hidden;
+}
   
 
 @media screen and (max-width: 768px) {
+    .header{
+        width: 100vw;
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        background-color: #FAD4C0;
+        color: #000000;
+        align-items: center;
+        z-index: 1000; 
+        padding: 10px;
+        box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+        justify-content: space-between;
+    }
+
     .main-cards {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -517,6 +535,64 @@ textarea.form-control {
 
     .header-left {
         display: none;
+    }
+
+    .sidebar {
+        grid-area: main;
+        width: 250px;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: -257px;
+        background-color: #FAD4C0;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 7px 8px 8px 0 rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+    }
+    
+    .sidebar.open {
+        left: 0;
+    }
+
+    .hidden-text {
+        display: none;
+    }
+
+    .vertical-separator {
+        display: none;
+    }
+
+    .form-control {
+        display: flex;
+        margin-left: 1.5%;
+        margin-right: 1.5%;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+        -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    }
+
+    .main-container {
+        position: absolute;
+        width: fit-content;
+        padding: 70px 30px;
+        transition: left 0.3s ease-in-out;
+        left: 0;
+    }
+
+    .main-container.open{
+        left: 0px;
     }
 }
 

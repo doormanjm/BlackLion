@@ -53,8 +53,8 @@
               <h2 style="text-align: center;">My Events</h2>
               <% if (events.length > 0) { %>
                 <% events.forEach(event => { %>
-                  <div class="event-card" style="display: flex; justify-content: space-between;">
-                    <div class="icon icon-shape background-red text-primary" >
+                  <div class="event-card2">
+                    <div id="dashboard-link" class="icon icon-shape background-red text-primary" >
                       <a href="/event/<%= event.id %>/dashboard"><span class="material-icons">celebration</span></a>
                     </div>
                     <div class="event-info">
@@ -86,7 +86,7 @@
                   </div>
                 </div>
               <% } %>
-              <p style="visibility: hidden;">Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail. Unlike other event planning companies, Black Lion Group offers personalized services tailored to the unique needs and visions of each client. Their expertise in coordinating various types of events ensures that every aspect, from logistics to aesthetics, is handled flawlessly.</p>
+              <p class="hidden-text">Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail. Unlike other event planning companies, Black Lion Group offers personalized services tailored to the unique needs and visions of each client. Their expertise in coordinating various types of events ensures that every aspect, from logistics to aesthetics, is handled flawlessly.</p>
             </div>
           </div>
         </article>
