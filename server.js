@@ -128,7 +128,7 @@ async function initializeApp() {
     });
 
     // Home route showing user-specific events
-    app.get('/profile', ensureAuthenticated, async (req, res) => res.render('profile.ejs', { user: req.user }));
+    app.get('/profile', ensureAuthenticated, async (req, res) => res.render('profile.ejs', {user: req.user, message: ""}));
     app.put('/profile', ensureAuthenticated, async (req, res) => {
       try {
         const { first_name, last_name, email, phone, username, password } = req.body;
@@ -148,7 +148,7 @@ async function initializeApp() {
         res.redirect('/profile');
       } catch (err) {
         console.error('Error updating person:', err);
-        res.redirect('/profile');
+        res.render('profile.ejs', {user: req.user, message: err});
       }
     });
 

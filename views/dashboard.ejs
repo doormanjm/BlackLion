@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&style=filled">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="/css/styles.css">
-    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/landing.css">
+    <title>Event Dashboard</title>
   </head>
   <body>
     <!-- Header Start -->
@@ -54,6 +55,7 @@
                 </div>
             </div>
             <span class="text-primary"><%= event.name %></span>
+            <p style="visibility: hidden;">Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail.</p>
         </div>
         <div class="card">
           <div class="card-inner">
@@ -63,6 +65,7 @@
               </div>
           </div>
           <span class="text-primary"><%= event.date.toDateString() %></span>
+          <p style="visibility: hidden;">Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail.</p>
         </div>
         <div class="card">
           <div class="card-inner">
@@ -72,7 +75,8 @@
               </div>
           </div>
           <span class="text-primary"><%= event.venue_name %></span>
-          <span class="text-primary"><%= event.address %></span>
+          <p><%= event.address %></p>
+          <p style="visibility: hidden;">Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail.</p>
       </div>
       <div class="card">
         <div class="card-inner">
@@ -82,17 +86,20 @@
             </div>
         </div>
         <span class="text-primary"><%= event.guest_count %></span>
+        <p style="visibility: hidden;">Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail.</p>
       </div>
       </div>
       <div class="charts">
         <div class="charts-card">
           <p class="chart-title">Resource Status</p>
           <div id="bar-chart"></div>
+          <p style="visibility: hidden;">Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail.</p>
         </div>
 
         <div class="charts-card">
           <p class="chart-title">RSVPs</p>
           <div id="area-chart"></div>
+          <p style="visibility: hidden;">Black Lion Group excels in the event planning industry by combining creativity with meticulous attention to detail.</p>
         </div>
       </div>
     </div>
@@ -108,7 +115,7 @@
           </a>
         </li><br>
         <li class="list-item">
-          <a href="/home">
+          <a href="/my_events">
             <span class="material-symbols-rounded">upcoming</span> MY EVENTS
           </a>
         </li><br>

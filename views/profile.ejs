@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/landing.css">
-    <title>Login</title>
+    <title>My Profile</title>
   </head>
   
   <body>
@@ -50,6 +50,9 @@
       <div class="content-with-bg2">
         <div class="login-form">
           <h1>User Profile</h1>
+          <% if (message) { %>
+            <p style="color: red;"><%= message %></p>
+          <% } %>
           <form class="login-form-inner" action="/profile?_method=PUT" id="Edit-Profile-Form" method="POST">
             <label for="first_name">First Name:</label>
             <input class="form-control-profile" type="text" id="first_name" name="first_name" value="<%= user.first_name %>" disabled><br>
