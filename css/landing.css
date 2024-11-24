@@ -301,6 +301,7 @@ article {
     }
 
     .login-form {
+        width: fit-content;
         margin: 2% auto;
         text-align: center;
         padding: 2%;

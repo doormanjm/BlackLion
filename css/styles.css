@@ -436,7 +436,8 @@ textarea.form-control {
 
 .form-control-profile {
     display: block;
-    width: 65%;
+    width: 100%;  /* Ensure full width */
+    min-width: 65%;  /* Restrict maximum width to 500px */
     margin-left: 10px;
     margin-right: 10px;
     height: calc(1.5em + 0.75rem + 2px);
@@ -504,6 +505,12 @@ textarea.form-control {
 .hidden-text {
     visibility: hidden;
 }
+
+.span-button {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+}
   
 
 @media screen and (max-width: 768px) {
@@ -564,6 +571,8 @@ textarea.form-control {
 
     .form-control {
         display: flex;
+        width: 100%;  /* Ensure full width */
+        min-width: 65%;  /* Restrict maximum width to 500px */
         margin-left: 1.5%;
         margin-right: 1.5%;
         height: calc(1.5em + 0.75rem + 2px);
@@ -581,6 +590,29 @@ textarea.form-control {
         -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    }
+
+    .form-control-profile {
+        display: flex;
+        width: 100%;  /* Ensure full width */
+        min-width: 65%;  /* Restrict maximum width to 500px */
+        margin-left: 1.5%;
+        margin-right: 1.5%;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+        -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; 
     }
 
     .main-container {
